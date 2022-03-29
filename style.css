@@ -49,3 +49,49 @@ i{
 .github{
     color: #434C5E;
 }
+
+header > a {
+    text-decoration: none;
+    color: #5E81AC;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
+header{
+    text-align: end;
+    margin: 20px;
+
+}
+a.instagram:any-link >{
+    color: #B48EAD ;
+}
+a.github:any-link >{
+    color: #3B4252 ;
+}
+.fa-house{
+    font-size: 19px;
+}
+h1{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.user,.pc{
+    color:#5E81AC;
+}
+.separation,.path,.root{
+    color: #88C0D0;
+}
+.bio{
+    font-size: 23px;
+    margin-top: 30px;
+}
+.house{
+    position: absolute;
+    text-align: left;
+}
+.house > a{
+    text-decoration: none;
+    color: #5E81AC;
+    font-size: 20px;
+    font-weight: bold;
+}
