@@ -134,3 +134,6 @@ h1{
 
 }
 
+.skill>img{
+    max-width: 370px;
+}
