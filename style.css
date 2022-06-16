@@ -144,3 +144,25 @@ h1{
     max-height: 370px;
 
 }
+body{
+    overflow-x: hidden;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #292E39;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #434c5e;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3b4252;
+  }
