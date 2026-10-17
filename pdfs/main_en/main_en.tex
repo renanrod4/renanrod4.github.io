@@ -1,0 +1,249 @@
+\documentclass[,a4paper]{article}
+
+% --- Pacotes Necessários ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[margin=0cm]{geometry}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{accsupp}
+\hypersetup{hidelinks}
+\usetikzlibrary{shapes, shadows, arrows, positioning}
+
+% --- Configuração de Grid Compacto ---
+\setlength{\multicolsep}{2pt}
+\setlength{\columnsep}{5pt} % <--- REDUZ O ESPAÇO HORIZONTAL ENTRE COLUNAS
+
+% --- Definição de Cores ---
+\definecolor{mainpurple}{HTML}{8B3DEC}
+\definecolor{sidebargray}{HTML}{1F1F1F}
+\definecolor{lightbg}{HTML}{F8F9FA}
+\definecolor{textgray}{HTML}{444444}
+\definecolor{darkpurple}{HTML}{6A2EB5}
+
+% --- Configurações de Fonte ---
+\usepackage[sfdefault]{roboto}
+\hbadness=10000
+
+% --- Título da Sidebar (alinhamento visual) ---
+\newcommand{\sidebartitle}[2]{%
+  \begin{center}
+    {\color{mainpurple}\bfseries\LARGE \makebox[1.3em][c]{#1}\hspace{0.35em}#2}
+  \end{center}%
+  \vspace{0.14cm}%
+}
+\newcommand{\sideblockspace}{\vspace{0.1cm}}
+
+\begin{document}
+
+\pagestyle{empty}
+
+% --- Estrutura de Fundo (TikZ) ---
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[sidebargray] (current page.north west) rectangle ([xshift=7.5cm]current page.south west);
+  \fill[mainpurple] ([xshift=7cm, yshift=-1cm]current page.north west)
+  [rounded corners=20pt] -- ([xshift=20.5cm, yshift=-1cm]current page.north west)
+  -- ([xshift=20.5cm, yshift=-4.2cm]current page.north west)
+  [rounded corners=20pt] -- ([xshift=7.5cm, yshift=-4.2cm]current page.north west) -- cycle;
+  \node[circle, draw=white, line width=3pt, minimum size=3.5cm, inner sep=0pt, fill=lightbg,
+    path picture={
+      \IfFileExists{assets/profile.png}{
+        \begin{scope}
+          \clip (path picture bounding box.center) circle [radius=1.75cm];
+          \node at (path picture bounding box.center) {
+            \includegraphics[width=3.5cm,height=3.5cm]{assets/profile.png}
+          };
+        \end{scope}
+      }{
+        \node at (path picture bounding box.center) {\color{textgray}\footnotesize PHOTO};
+      }
+    }
+  ] at ([xshift=7.5cm, yshift=-4.2cm]current page.north west) {};
+\end{tikzpicture}
+
+% --- Conteúdo ---
+\begin{minipage}[t]{6.5cm} % COLUNA LATERAL
+  \vspace{1.2cm}
+  \begin{flushleft}
+    \color{white}
+    \sidebartitle{\faUser}{CONTACT}
+    \vspace{0.6cm}
+    \faLinkedin \quad \href{https://linkedin.com/in/renanrod4}{renanrod4} \\
+    \vspace{0.2cm}
+    \faPhone* \quad (11) 93340-7053 \\
+    \vspace{0.2cm}
+    \faGithub \quad \href{https://github.com/renanrod4}{github/renanrod4} \\
+    \vspace{0.2cm}
+    \faGlobe \quad \href{https://renanrod.vercel.app/}{renanrod.vercel.app} \\
+    \vspace{0.2cm}
+
+    \faEnvelope\quad \href{mailto:renanrdemeneses@gmail.com}{\normalsize renanrdemeneses@gmail.com} \\
+    \vspace{0.2cm}
+    \faMapMarker* \quad São Paulo, SP - Brazil\\
+
+    \vspace{0.5cm}
+
+    \sidebartitle{\faCode}{SKILLS}
+    \vspace{-0.3cm}
+
+    \newcommand{\skilltag}[1]{%
+      \tikz[baseline]\node[
+        fill=mainpurple!30!black,
+        draw=mainpurple!75,
+        rounded corners=4pt,
+        inner xsep=7pt,
+        inner ysep=4pt,
+        text=lightbg,
+        font=\normalsize\bfseries
+      ] {#1};%
+    }
+
+    \newcommand{\langtag}[3]{%
+      \tikz[baseline]\node[
+        fill=mainpurple!30!black,
+        draw=mainpurple!75,
+        rounded corners=4pt,
+        inner xsep=8pt,
+        inner ysep=4.5pt,
+        text=lightbg,
+        font=\normalsize\bfseries
+      ] {\raisebox{-0.2em}{\includegraphics[height=1.25em]{#1}}\hspace{0.45em}\strut #2\hspace{0.4em}{\small\strut #3}};%
+    }
+
+    \begin{center}
+      \normalsize\textbf{Software \& Tools} \\
+      \vspace{0.08cm}
+      \skilltag{Blender}\hspace{2pt}\skilltag{Unity}\hspace{2pt}\skilltag{VS Code}\\
+      \vspace{0.08cm}
+      \skilltag{Arduino}\hspace{2pt}\skilltag{Figma}\hspace{2pt}\skilltag{Git}\\
+      \vspace{0.08cm}
+      \skilltag{GitHub}\hspace{2pt}\skilltag{Bootstrap}\hspace{2pt}\skilltag{Tailwind}\\
+      \vspace{0.08cm}
+      \skilltag{Vercel}
+    \end{center}
+
+    \sideblockspace
+    \begin{center}
+      \normalsize\textbf{Web Development} \\
+      \vspace{0.08cm}
+      \skilltag{HTML}\hspace{2pt}\skilltag{CSS}\hspace{2pt}\skilltag{JavaScript}\\
+      \vspace{0.08cm}
+      \skilltag{TypeScript}\hspace{2pt}\skilltag{React}\hspace{2pt}\skilltag{Next.js}\\
+      \vspace{0.08cm}
+      \skilltag{Node.js}\hspace{2pt}\skilltag{PHP}\hspace{2pt}\skilltag{REST}
+    \end{center}
+
+    \sideblockspace
+    \begin{center}
+      \normalsize\textbf{Programming Languages} \\
+      \vspace{0.08cm}
+      \skilltag{Python}\hspace{2pt}\skilltag{Rust}\hspace{2pt}\skilltag{C++}\\
+      \vspace{0.08cm}
+      \skilltag{C\#}\hspace{2pt}\skilltag{Bash}
+    \end{center}
+
+    \sideblockspace
+    \begin{center}
+      \normalsize\textbf{Databases} \\
+      \vspace{0.08cm}
+      \skilltag{MySQL}\hspace{2pt}\skilltag{MongoDB}
+    \end{center}
+
+    \vspace{0.3cm}
+
+    \sidebartitle{\faGlobe}{LANGUAGES}
+    \vspace{0cm}
+    \begin{center}
+      \begin{tabular}{@{}c@{}}
+        \langtag{assets/flags/br.png}{Portuguese}{Native} \\
+        [0.6cm]
+        \langtag{assets/flags/us.png}{English}{Advanced} \\
+        [0.6cm]
+        \langtag{assets/flags/de.png}{German}{Basic}
+      \end{tabular}
+    \end{center}
+  \end{flushleft}
+\end{minipage}
+\hspace{1.5cm}
+\begin{minipage}[t]{11.5cm} % COLUNA PRINCIPAL
+  \vspace{1.2cm}
+  {\Huge \textbf{\color{white} RENAN RODRIGUES}} \\
+  \vspace{0.2cm}
+  {\hspace*{1cm}\large\textbf{ \color{white!80} Computer Engineering | Full Stack Developer}}
+
+  \vspace{1.4cm}
+
+  \begin{minipage}{11.0cm}
+    \section*{\hspace*{0.5cm}\vspace{-0.4cm}\color{mainpurple}{\faIdCard \quad SUMMARY}}
+    \vspace{0.2cm}
+    {\normalsize \color{textgray} Computer Engineering student focused on Full Stack development. Hands-on experience building web applications, REST APIs, and interactive systems using JavaScript/TypeScript, React, Next.js, and Rust. I aim to apply my skills in real-world projects and continuously grow as a developer.\par}
+    \vspace*{-0.2cm}
+    \section*{\hspace*{0.5cm}\color{mainpurple}{\faGraduationCap \quad EDUCATION}}
+    \noindent \textbf{Bachelor's Degree in Computer Engineering} \hfill \textbf{2025 -- 2030} \\
+    \textit{\color{textgray}Universidade de Sorocaba (UNISO)}\par
+    \vspace{0.3cm}
+    \noindent \textbf{High School Completed} \hfill \textbf{2022 -- 2024} \\
+    \textit{\color{textgray}E.E. Bel Elias Alves da Costa Bacharel}{\color{textgray}\hfill{2023 -- 2024}}\\
+    \textit{\color{textgray}Colégio Cognos Sistema Mackenzie de Ensino} {\color{textgray}\hfill{2022}}
+    \vspace*{-0.2cm}
+    \section*{\hspace*{0.5cm}\color{mainpurple}{\faFlask \quad ACADEMIC EXPERIENCE \& R\&D (UNISO)}}
+    {\normalsize
+    \noindent {\color{black}\textbf{Uniso Flow} | \textit{Full Stack Developer} \hfill \textbf{2025 -- Present}}\\
+    \color{textgray}Predictive analysis system for academic flow management, with prerequisite-crossing algorithms to forecast demand and identify bottlenecks.\\[-0.05cm]
+    \color{textgray}\textbf{Tech:} Next.js, Tailwind, Radix UI, Tauri (Rust).\\[0.1cm]
+    \noindent {\color{black}\textbf{Industrial Laser Thermometer} | \textit{ESP32 \& C++} \hfill \textbf{2025 -- Present}}\\
+    \color{textgray}Hardware prototyping for precise thermal measurement (vaccines and food), including firmware for optical sensor calibration and signal processing.\\[-0.05cm]
+    \color{textgray}\textbf{Tech:} C++, ESP32, Infrared Sensors.
+    }
+    \vspace*{-0.2cm}
+    \section*{\hspace*{0.5cm}\color{mainpurple}{\faRocket \quad TECHNICAL PROJECTS}}
+
+    \href{https://octodev.vercel.app/}{\tikz[baseline]\node[fill=mainpurple!10, rounded corners=8pt, inner sep=6pt] {
+        \begin{minipage}{10.55cm}
+          \raggedright
+          \textbf{\color{darkpurple}OctoDev} | \textit{React, Next.js, MongoDB, AI}\\
+          \small Full Stack educational platform for gamified programming learning, featuring challenges, multiple languages, and real-time code assessment.
+        \end{minipage}
+    };}
+    \vspace{0.15cm}
+
+    \href{https://helio-sync.vercel.app}{\tikz[baseline]\node[fill=mainpurple!10, rounded corners=8pt, inner sep=6pt] {
+        \begin{minipage}{10.55cm}
+          \raggedright
+          \textbf{\color{darkpurple}Helio Sync} | \textit{TypeScript, Python, MQTT}\\
+          \small Mechatronic platform for two-axis solar tracking, featuring real-time telemetry, efficiency analysis, and remote hardware control.
+        \end{minipage}
+    };}
+    \vspace{0.15cm}
+
+    \href{https://github.com/renanrod4/vscode-code-in-comments}{\tikz[baseline]\node[fill=mainpurple!10, rounded corners=8pt, inner sep=6pt] {
+        \begin{minipage}{10.55cm}
+          \raggedright
+          \textbf{\color{darkpurple}CodeInComments} | \textit{VS Code Extension, JavaScript, Rust, Python}\\
+          \small VS Code extension that highlights code blocks inside comments while preserving syntax highlighting and providing configurable effects.
+        \end{minipage}
+    };}
+    \section*{\hspace*{0.5cm}\color{mainpurple}{\faTrophy \quad ACHIEVEMENTS}}
+    \begin{itemize}[label=\color{mainpurple}\faCheck, leftmargin=1.2em, itemsep=4pt]
+      \item \textbf{São Paulo Science Fair (2023):} Muon research (Fermilab/USP).
+      \item \textbf{Bronze Medal:} Mathematics Olympiad (2024).
+      \item \textbf{Medalist:} Brazilian Astronomy Olympiad (2024).
+    \end{itemize}
+  \end{minipage}
+
+\end{minipage}
+
+% --- Footer fixo no rodapé da página ---
+\begin{tikzpicture}[remember picture, overlay]
+  \node[anchor=south, yshift=0.35cm] at ([xshift=14.25cm]current page.south west) {
+    \footnotesize \color{textgray} \faCode \hspace{2pt} Built with \LaTeX \hspace{1pt} by Renan Rodrigues
+  };
+\end{tikzpicture}
+
+\end{document}
